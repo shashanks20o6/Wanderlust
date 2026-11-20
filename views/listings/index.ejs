@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wanderlust</title>
+</head>
+
+<body>
+    <h1>all listings</h1>
+    <form method="get" action="/listings/new">
+        <button>Create New Listing</button>
+    </form>
+    <form method="get" action="/listings/new">
+        <label for="price">PRICE RANGE</label>
+        <select id="price" onchange="if (this.value) window.location.href = '/listings/filter/' + this.value;" >
+            <option value=500>less than 500</option>
+            <option value=1000>less than 1000</option>
+            <option value=5000>less than 5000</option>
+            <option value=100000>less than 100000</option>
+            <option value=999999999>max value</option>
+        </select>
+
+
+
+    </form>
+    <% for(let listing of allListings) { %>
+        <li>
+            <a href="/listings/<%= listing._id %>">
+                <%= listing.title %>
+            </a>
+        </li>
+        <% } %>
+
+</body>
+
+</html>
